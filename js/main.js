@@ -2,6 +2,7 @@
 const searchInput = document.querySelector('.js-search-bar');
 const searchBtn = document.querySelector('.js-search-btn');
 const searchList = document.querySelector('.js-series-list');
+const favoriteSection = document.querySelector('.js-fav-series-container');
 let favoritesList = [];
 let searchResult = [];
 
@@ -65,12 +66,28 @@ function addToFavorites(event) {
     elemTarget.classList.remove('favorite');
     favoritesList.splice(seriesFavIndex, 1);
   }
+  paintFavoritesList();
 }
 console.log(favoritesList);
-/*function searchHandler() {
-  getInfoFromApi();
-  paintResults();
-}*/
-//listener
+
+//Include favorites in the favorites aside section
+function paintFavoritesList() {
+  let HTMLCode = '';
+  for (let i = 0; i < favoritesList.length; i++) {
+    const title = favoritesList[i].show.name;
+    let picture = favoritesList[i].show.image;
+    if (favoritesList[i].show.image) {
+      picture = favoritesList[i].show.image.medium;
+    } else {
+      picture = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV.';
+    }
+
+    HTMLCode += `<div class="favorite-item js-favorite-container">
+      <img src="${picture}">
+      <h3 class="name">${title}</h3>
+      </div>`;
+  }
+  favoriteSection.innerHTML = HTMLCode;
+}
 searchBtn.addEventListener('click', getInfoFromApi);
 getInfoFromApi();
