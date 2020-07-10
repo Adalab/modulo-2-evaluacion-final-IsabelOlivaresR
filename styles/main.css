@@ -8,7 +8,11 @@
 .page__title {
   text-transform: uppercase;
 }
-
+.serie__container {
+  font-size: 20px;
+  color: #031769;
+}
 .favorite {
-  background-color: blue;
+  background-color: #031769;
+  color: #a9e2f3;
 }
