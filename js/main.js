@@ -67,6 +67,7 @@ function addToFavorites(event) {
     favoritesList.splice(seriesFavIndex, 1);
   }
   paintFavoritesList();
+  addFavToLocalStorage();
 }
 console.log(favoritesList);
 
@@ -89,5 +90,22 @@ function paintFavoritesList() {
   }
   favoriteSection.innerHTML = HTMLCode;
 }
+
+//local storage
+//add info to Local Storage
+function addFavToLocalStorage() {
+  localStorage.setItem('fav', JSON.stringify(favoritesList));
+}
+
+//get info from Local Storage
+function getFromLocalStorage() {
+  const favData = JSON.parse(localStorage.getItem('fav'));
+  if (favData !== null) {
+    favoritesList = favData;
+  }
+  paintFavoritesList();
+}
 searchBtn.addEventListener('click', getInfoFromApi);
-getInfoFromApi();
+
+//start app
+getFromLocalStorage();
