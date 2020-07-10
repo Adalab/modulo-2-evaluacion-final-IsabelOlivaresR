@@ -3,10 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/reset.css" />
     <link rel="stylesheet" href="./styles/main.css" />
     <title>Buscador de series</title>
   </head>
   <body>
+    <div class="page">
+      <h1 class="page__title">buscador de series</h1>
+      <input type="text" class="js-search-bar" />
+      <button class="search-btn js-search-btn" type="button">buscar</button>
+      <ul class="js-series-list"></ul>
+      <aside class="favorite-section js-favorite-section"></aside>
+    </div>
     <script src="./js/main.js"></script>
   </body>
 </html>
