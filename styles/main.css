@@ -1,29 +1,126 @@
+body {
+  background-color: #a9e2f3;
+}
 .page {
+  height: 100vh;
   background-color: #a9e2f3;
   display: flex;
   flex-direction: row;
 }
 .favorite-section {
+  background-color: white;
+  height: 100%;
   width: 25%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.favorite-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+.favorite-item img {
+  width: 100px;
+}
+.favorite-item h3 {
+  font-size: 16px;
+  font-family: 'Rubik', sans-serif;
+  margin: 0 5px;
+}
+.cross-btn {
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  outline: none;
+  color: white;
+  background-color: black;
+  font-family: 'Rubik', sans-serif;
+  font-size: 10px;
+  text-align: center;
+  line-height: 12px;
+}
+.series-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 .search-section {
   width: 75%;
+  height: 100%;
   order: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  margin: 0 30px;
+}
+.search-bar {
+  width: 400px;
+  height: 30px;
+  font-family: 'Rubik', sans-serif;
+  font-size: 18px;
+}
+.search-btn {
+  background-color: #cbd1ee;
+  color: black;
+  font-family: 'Fredoka One', cursive;
+  text-transform: capitalize;
+  width: 100px;
+  height: 40px;
+  border-radius: 15px;
+  margin-top: 30px;
 }
 .page__title {
   text-transform: uppercase;
+  font-family: 'Fredoka One', cursive;
+  font-size: 40px;
+  margin: 50px 0;
 }
 .serie__container {
-  font-size: 20px;
+  font-size: 15px;
+  font-family: 'Rubik', sans-serif;
   color: #031769;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 5px;
 }
 .favorite {
   background-color: #031769;
   color: #a9e2f3;
+  font-size: 15px;
+  font-family: 'Rubik', sans-serif;
+}
+.fav-title {
+  font-family: 'Rubik', sans-serif;
+  font-size: 20px;
+  background-color: #031769;
+  color: white;
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin: 0;
+  padding: 10px 0;
+  text-align: center;
+  line-height: 40px;
+}
+.hidden {
+  display: none !important;
+}
+.reset-btn {
+  width: 60px;
+  height: 40px;
+  background-color: #cbd1ee;
+  color: black;
+  font-family: 'Fredoka One', cursive;
+  margin-top: 20px;
+  border-radius: 12px;
+  outline: none;
+  text-transform: capitalize;
+}
+.show {
+  display: block;
 }

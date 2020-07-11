@@ -3,6 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./styles/reset.css" />
     <link rel="stylesheet" href="./styles/main.css" />
     <title>Buscador de series</title>
@@ -11,14 +19,21 @@
     <div class="page">
       <div class="search-section">
         <h1 class="page__title">buscador de series</h1>
-        <input type="text" class="js-search-bar" value="starWars" />
+        <input
+          type="text"
+          class="search-bar js-search-bar"
+          placeholder="Introduce una serie"
+        />
         <button class="search-btn js-search-btn" type="button">buscar</button>
-        <ul class="js-series-list"></ul>
+        <ul class="series-list js-series-list"></ul>
       </div>
       <aside class="favorite-section js-favorite-section">
-        <h2>Series favoritas</h2>
-        <p>No ha seleccionado aún ninguna serie favorita.</p>
-        <div class="fav-series-container js-fav-series-container"></div>
+        <h2 class="fav-title">Series favoritas</h2>
+        <p class="alert show">No ha seleccionado ninguna serie favorita.</p>
+        <ul class="fav-series-container js-fav-series-container"></ul>
+        <button class="reset-btn js-reset-btn">
+          reset
+        </button>
       </aside>
     </div>
     <script src="./js/main.js"></script>

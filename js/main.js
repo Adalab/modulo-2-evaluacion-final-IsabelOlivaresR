@@ -3,6 +3,7 @@ const searchInput = document.querySelector('.js-search-bar');
 const searchBtn = document.querySelector('.js-search-btn');
 const searchList = document.querySelector('.js-series-list');
 const favoriteSection = document.querySelector('.js-fav-series-container');
+const resetBtn = document.querySelector('.js-reset-btn');
 let favoritesList = [];
 let searchResult = [];
 
@@ -26,7 +27,8 @@ function paintResults() {
     if (searchResult[i].show.image) {
       picture = searchResult[i].show.image.medium;
     } else {
-      picture = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV.';
+      picture =
+        'https://via.placeholder.com/210x295/ffffff/666666/?text=No+imagen.';
     }
 
     codeHTML += `<li class="serie__container js-serie-container">
@@ -44,7 +46,6 @@ function listenSeriesClick() {
 
   for (let i = 0; i < seriesList.length; i++) {
     const serieItem = seriesList[i];
-    console.log(serieItem);
     serieItem.addEventListener('click', addToFavorites);
   }
 }
@@ -80,18 +81,56 @@ function paintFavoritesList() {
     if (favoritesList[i].show.image) {
       picture = favoritesList[i].show.image.medium;
     } else {
-      picture = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV.';
+      picture =
+        'https://via.placeholder.com/210x295/ffffff/666666/?text=No+imagen.';
     }
 
-    HTMLCode += `<div class="favorite-item js-favorite-container">
+    HTMLCode += `<li class="favorite-item js-favorite-container">
       <img src="${picture}">
       <h3 class="name">${title}</h3>
-      </div>`;
+      <span class="cross-btn js-cross-btn">x</span>
+      </li>`;
   }
   favoriteSection.innerHTML = HTMLCode;
+  removeOrAddMessage();
+  listenCrossBtnClick();
 }
 
-//local storage
+function removeOrAddMessage() {
+  const noFavMessage = document.querySelector('p');
+  if (favoriteSection.innerHTML === '') {
+    noFavMessage.classList.remove('hidden');
+  } else {
+    noFavMessage.classList.add('hidden');
+  }
+}
+
+//Remove favorites from aside section and local storage with cross button
+function listenCrossBtnClick() {
+  const crossBtnList = document.querySelectorAll('.js-cross-btn');
+  console.log(crossBtnList);
+  for (let i = 0; i < crossBtnList.length; i++) {
+    const crossBtnItem = crossBtnList[i];
+    crossBtnItem.addEventListener('click', removeFavFromSection);
+  }
+}
+
+function removeFavFromSection(event) {
+  const elementTarget = event.currentTarget.parentElement;
+  const seriesTitle = elementTarget.querySelector('h3').innerHTML;
+  const seriesFavIndex = favoritesList.findIndex(
+    (serie) => serie.show.name === seriesTitle
+  );
+  console.log(seriesFavIndex);
+  if (seriesFavIndex !== -1) {
+    favoritesList.splice(seriesFavIndex, 1);
+    console.log(seriesTitle);
+  }
+  paintFavoritesList();
+  addFavToLocalStorage();
+}
+
+//LOCAL STORAGE
 //add info to Local Storage
 function addFavToLocalStorage() {
   localStorage.setItem('fav', JSON.stringify(favoritesList));
@@ -105,7 +144,18 @@ function getFromLocalStorage() {
   }
   paintFavoritesList();
 }
+
+//reset button
+function resetFavSection() {
+  favoritesList = [];
+  paintFavoritesList();
+  localStorage.removeItem('fav');
+}
+//Listeners
 searchBtn.addEventListener('click', getInfoFromApi);
+resetBtn.addEventListener('click', resetFavSection);
+/*crossBtn.addEventListener('click', removeFavFromSection);*/
 
 //start app
 getFromLocalStorage();
+removeOrAddMessage();
