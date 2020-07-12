@@ -13,23 +13,33 @@
     />
     <link rel="stylesheet" href="./styles/reset.css" />
     <link rel="stylesheet" href="./styles/main.css" />
+    <script
+      src="https://kit.fontawesome.com/c75582e3c5.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Buscador de series</title>
   </head>
   <body>
     <div class="page">
       <div class="search-section">
-        <h1 class="page__title">buscador de series</h1>
+        <h1 class="page__title">
+          <i class="fa fa-television" aria-hidden="true"></i> buscador de series
+        </h1>
         <input
           type="text"
           class="search-bar js-search-bar"
           placeholder="Introduce una serie"
         />
-        <button class="search-btn js-search-btn" type="button">buscar</button>
+        <button class="search-btn js-search-btn" type="button">
+          buscar <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
         <ul class="series-list js-series-list"></ul>
       </div>
       <aside class="favorite-section js-favorite-section">
-        <h2 class="fav-title">Series favoritas</h2>
-        <p class="alert show">No ha seleccionado ninguna serie favorita.</p>
+        <h2 class="fav-title">
+          <i class="fa fa-heart-o" aria-hidden="true"></i>Series favoritas
+        </h2>
+        <p class="message">No ha seleccionado ninguna serie favorita.</p>
         <ul class="fav-series-container js-fav-series-container"></ul>
         <button class="reset-btn js-reset-btn">
           reset

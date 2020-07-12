@@ -88,7 +88,7 @@ function paintFavoritesList() {
     HTMLCode += `<li class="favorite-item js-favorite-container">
       <img src="${picture}">
       <h3 class="name">${title}</h3>
-      <span class="cross-btn js-cross-btn">x</span>
+      <button class="cross-btn js-cross-btn"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
       </li>`;
   }
   favoriteSection.innerHTML = HTMLCode;
