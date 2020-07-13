@@ -12,13 +12,11 @@ function getInfoFromApi() {
   fetch(`http://api.tvmaze.com/search/shows?q=${searchInput.value}`)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
-
       searchResult = data;
       paintResults();
     });
 }
-//paint series info
+//paint series search results
 function paintResults() {
   let codeHTML = '';
   for (let i = 0; i < searchResult.length; i++) {
@@ -30,11 +28,18 @@ function paintResults() {
       picture =
         'https://via.placeholder.com/210x295/ffffff/666666/?text=No+imagen.';
     }
+    let favClass = '';
+    for (let index = 0; index < favoritesList.length; index++) {
+      const favTitle = favoritesList[index].show.name;
 
-    codeHTML += `<li class="serie__container js-serie-container">
-      <img src="${picture}">
-      <h3 class="name">${title}</h3>
-      </li>`;
+      if (favTitle === title) {
+        favClass = 'favorite';
+      }
+    }
+    codeHTML += `<li class="serie__container js-serie-container ${favClass}">
+    <img src="${picture}">
+    <h3 class="name">${title}</h3>
+    </li>`;
   }
   searchList.innerHTML = codeHTML;
   listenSeriesClick();
@@ -70,7 +75,6 @@ function addToFavorites(event) {
   paintFavoritesList();
   addFavToLocalStorage();
 }
-console.log(favoritesList);
 
 //Include favorites in the favorites aside section
 function paintFavoritesList() {
@@ -108,7 +112,6 @@ function removeOrAddMessage() {
 //Remove favorites from aside section and local storage with cross button
 function listenCrossBtnClick() {
   const crossBtnList = document.querySelectorAll('.js-cross-btn');
-  console.log(crossBtnList);
   for (let i = 0; i < crossBtnList.length; i++) {
     const crossBtnItem = crossBtnList[i];
     crossBtnItem.addEventListener('click', removeFavFromSection);
@@ -121,10 +124,8 @@ function removeFavFromSection(event) {
   const seriesFavIndex = favoritesList.findIndex(
     (serie) => serie.show.name === seriesTitle
   );
-  console.log(seriesFavIndex);
   if (seriesFavIndex !== -1) {
     favoritesList.splice(seriesFavIndex, 1);
-    console.log(seriesTitle);
   }
   paintFavoritesList();
   addFavToLocalStorage();
@@ -148,14 +149,14 @@ function getFromLocalStorage() {
 //reset button
 function resetFavSection() {
   favoritesList = [];
+  searchResult = [];
+  paintResults();
   paintFavoritesList();
-  localStorage.removeItem('fav');
+  addFavToLocalStorage();
 }
 //Listeners
 searchBtn.addEventListener('click', getInfoFromApi);
 resetBtn.addEventListener('click', resetFavSection);
-/*crossBtn.addEventListener('click', removeFavFromSection);*/
 
 //start app
 getFromLocalStorage();
-removeOrAddMessage();

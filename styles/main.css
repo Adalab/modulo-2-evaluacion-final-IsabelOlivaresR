@@ -123,10 +123,11 @@ body {
   font-size: 15px;
   font-family: 'Rubik', sans-serif;
   color: #031769;
+  background-color: #90b5c1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 5px;
+  margin: 0 5px 15px 5px;
   text-align: center;
 }
 .serie__container img {
@@ -135,7 +136,7 @@ body {
 }
 .favorite {
   background-color: #031769;
-  color: white;
+  color: #90b5c1;
   font-size: 15px;
   font-family: 'Rubik', sans-serif;
   font-weight: 300;
