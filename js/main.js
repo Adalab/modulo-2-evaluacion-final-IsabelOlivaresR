@@ -128,6 +128,7 @@ function removeFavFromSection(event) {
     favoritesList.splice(seriesFavIndex, 1);
   }
   paintFavoritesList();
+  paintResults();
   addFavToLocalStorage();
 }
 

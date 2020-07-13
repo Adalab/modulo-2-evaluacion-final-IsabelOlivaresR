@@ -4,13 +4,14 @@ body {
 .page {
   background-color: #a9e2f3;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 /* FAVORITE SECTION*/
 .favorite-section {
-  height: 100vh;
-  width: 25%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,6 +69,9 @@ body {
   outline: none;
   text-transform: capitalize;
 }
+.reset-btn:hover {
+  background-color: #768a90;
+}
 .message {
   display: block;
   height: 60px;
@@ -83,17 +87,15 @@ body {
   justify-content: space-evenly;
 }
 .search-section {
-  width: 75%;
-  height: 100vh;
+  width: 100%;
   order: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  margin: 0 30px;
 }
 .search-bar {
-  width: 400px;
+  width: 200px;
   height: 30px;
   font-family: 'Rubik', sans-serif;
   font-size: 18px;
@@ -109,10 +111,13 @@ body {
   margin-top: 30px;
   outline: none;
 }
+.search-btn:hover {
+  background-color: #768a90;
+}
 .page__title {
   text-transform: uppercase;
   font-family: 'Fredoka One', cursive;
-  font-size: 40px;
+  font-size: 25px;
   margin: 50px 0;
 }
 .fa-television {
@@ -148,4 +153,42 @@ body {
 }
 .hidden {
   display: none !important;
+}
+
+@media all and (min-width: 768px) {
+  .page {
+    display: flex;
+    flex-direction: row;
+  }
+  .favorite-section {
+    height: 100vh;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .fav-title {
+    font-size: 18px;
+  }
+  .search-section {
+    width: 75%;
+    height: 100vh;
+    margin: 0 30px;
+  }
+  .search-bar {
+    width: 400px;
+    height: 30px;
+  }
+  .page__title {
+    text-transform: uppercase;
+    font-family: 'Fredoka One', cursive;
+    font-size: 40px;
+    margin: 50px 0;
+  }
+}
+@media all and (min-width: 1200px) {
+  .fav-title {
+    font-size: 20px;
+  }
 }
